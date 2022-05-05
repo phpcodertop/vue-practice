@@ -1,28 +1,32 @@
-import axios from "axios";
+import {http} from "@/utils/axios";
 import {useToast} from "vue-toastification";
 import authHeader from "@/services/authHeader.service";
+import moment from "moment";
 
-const apiUrl = process.env.VUE_APP_API_URL;
 const toast = useToast();
 
 const AuthService = {
-  login(data) {
-    return axios.post(apiUrl + '/auth/login', data)
-    .then((response) => {
-      localStorage.setItem('access_token', response.data.access_token);
-      return response.data;
-    })
-    .catch((error) => {
-      localStorage.removeItem('access_token');
-      toast.error(error.response.data.error);
-      throw error.response.data.error;
-    });
+    handleRequest: function (response) {
+        localStorage.setItem('access_token', response.data.access_token);
+        const expireTime = moment().add(response.data.expires_in, 'm').format();
+        localStorage.setItem('expires_in', expireTime);
+        return response.data;
+    },
+    login(data) {
+        return http.post('/auth/login', data)
+        .then((response) => {
+            return this.handleRequest(response);
+        })
+        .catch((error) => {
+          localStorage.removeItem('access_token');
+          toast.error(error.response.data.error);
+          throw error.response.data.error;
+        });
   },
   register(data) {
-    return axios.post(apiUrl + '/auth/register', data)
+    return http.post('/auth/register', data)
         .then((response) => {
-          localStorage.setItem('access_token', response.data.access_token);
-          return response.data;
+            return this.handleRequest(response);
         })
         .catch((error) => {
             localStorage.removeItem('access_token');
@@ -31,7 +35,7 @@ const AuthService = {
         });
   },
   me() {
-      return axios.post(apiUrl + '/auth/me', {}, { headers: authHeader() })
+      return http.post('/auth/me', {}, { headers: authHeader() })
           .then((response) => {
               localStorage.setItem('user', JSON.stringify(response.data));
               return Promise.resolve(response.data);
@@ -42,7 +46,7 @@ const AuthService = {
           });
   },
   logout() {
-      return axios.post(apiUrl + '/auth/logout', {}, { headers: authHeader() })
+      return http.post('/auth/logout', {}, { headers: authHeader() })
           .then(() => {
               localStorage.clear();
           })

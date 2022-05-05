@@ -30,6 +30,9 @@
     <app-footer />
 
   </div>
+  <div v-else-if="this.$route.meta.layout === '404'">
+    <router-view />
+  </div>
   <div v-else>
     <router-view />
   </div>
