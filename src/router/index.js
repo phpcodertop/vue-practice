@@ -1,16 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from "@/store";
+import moment from "moment";
+
 import Home from "@/pages/Home";
 import appTodo from "@/pages/app-todo";
 import appLogin from "@/pages/appLogin";
 import appRegister from "@/pages/appRegister";
-import store from "@/store";
 import NotFound from "@/pages/NotFound";
-import moment from "moment";
+import appProfile from "@/pages/AppProfile";
 
 const routes = [
     { path: '/', component: Home, name: 'home', meta: { requiresAuth: true } },
     { path: '/login', name: 'login', component: appLogin, meta: { layout: 'auth', redirectIfAuth: true }},
     { path: '/register', name: 'register', component: appRegister, meta: { layout: 'auth', redirectIfAuth: true }},
+    { path: '/profile', component: appProfile, name: 'profile', meta: { requiresAuth: true } },
     { path: '/todos', component: appTodo, name: 'todos', meta: { requiresAuth: true } },
     {
         // path: "*",
@@ -35,8 +38,6 @@ router.beforeResolve((to ) => {
     const expires_in = store.state.auth.expires_in;
     const ExpireObj = moment(expires_in);
     const diff = moment().diff(ExpireObj);
-    console.log(ExpireObj);
-    console.log(diff);
 
     if (to.meta.requiresAuth && !loggedIn) {
         return {

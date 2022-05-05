@@ -62,6 +62,12 @@ const authModule = {
                 commit('SET_USER', user);
             }).catch(() => {
             });
+        },
+        updateProfile({commit}, data) {
+            return AuthService.updateProfile(data).then((user) => {
+                commit('SET_USER', user);
+            }).catch(() => {
+            });
         }
     }
 };

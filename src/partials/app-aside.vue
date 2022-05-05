@@ -15,7 +15,7 @@
           <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{  user.name }}</a>
+          <router-link :to="{ name: 'profile' }" class="d-block">{{  user.name }}</router-link>
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     logout() {
-      document.body.classList.remove('login-page');
+      document.body.classList.add('login-page');
       this.$store.dispatch('logout').then(() => {
         this.$router.push('/login');
       });

@@ -45,13 +45,15 @@ const AuthService = {
               throw error;
           });
   },
-  logout() {
-      return http.post('/auth/logout', {}, { headers: authHeader() })
-          .then(() => {
-              localStorage.clear();
+  updateProfile(data) {
+      return http.post('/auth/profile', data, { headers: authHeader() })
+          .then((response) => {
+              localStorage.setItem('user', JSON.stringify(response.data));
+              toast.success('Profile Updated Successfully.');
+              return Promise.resolve(response.data);
           })
           .catch((error) => {
-              toast.error('Something happened while logout.');
+              toast.error('Something happened while updating profile.');
               throw error;
           });
 
