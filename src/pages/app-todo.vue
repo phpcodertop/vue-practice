@@ -39,7 +39,7 @@
                     </li>
                   </ul>
                 </div>
-                <p v-if="!displayedTodos.length" style="text-align: center"> There are no data.</p>
+                <p v-if="!displayedTodos" style="text-align: center"> There are no data.</p>
                 <div v-show="!todosExist" class="loader"></div>
               </div>
               <!-- Tabs content -->
@@ -102,10 +102,7 @@ export default {
   computed: {
     ...mapState(['todos']),
     todosExist() {
-      if (this.todos) {
-        return this.todos.todos.length;
-      }
-      return false;
+      return !!this.todos.todos;
     },
     completedTodos() {
       return this.todos.todos.filter((todo) => {

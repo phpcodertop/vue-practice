@@ -8,6 +8,7 @@ import appLogin from "@/pages/appLogin";
 import appRegister from "@/pages/appRegister";
 import NotFound from "@/pages/NotFound";
 import appProfile from "@/pages/AppProfile";
+import appContactsList from "@/pages/AppContactsList";
 
 const routes = [
     { path: '/', component: Home, name: 'home', meta: { requiresAuth: true } },
@@ -15,6 +16,7 @@ const routes = [
     { path: '/register', name: 'register', component: appRegister, meta: { layout: 'auth', redirectIfAuth: true }},
     { path: '/profile', component: appProfile, name: 'profile', meta: { requiresAuth: true } },
     { path: '/todos', component: appTodo, name: 'todos', meta: { requiresAuth: true } },
+    { path: '/contacts', component: appContactsList, name: 'contacts', meta: { requiresAuth: true } },
     {
         // path: "*",
         path: "/:catchAll(.*)",

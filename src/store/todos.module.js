@@ -1,9 +1,9 @@
 import todosService from "@/services/todos.service";
 
 const todosModule = {
-    state: () => ({
+    state: {
         todos: []
-    }),
+    },
     mutations: {
         SET_TODOS(state, todos){
             state.todos = todos;

@@ -12,6 +12,7 @@
     "admin-lte": "3.2",
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
+    "datatables.net-bs4": "^1.11.5",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
     "vee-validate": "^4.5.11",

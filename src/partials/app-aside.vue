@@ -37,7 +37,7 @@
 
           <li class="nav-item">
             <router-link :to="{ name: 'home' }" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Home Page
               </p>
@@ -45,9 +45,17 @@
           </li>
           <li class="nav-item">
             <router-link :to="{ name: 'todos' }" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-check"></i>
               <p>
                 Todos
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'contacts' }" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                Contacts
               </p>
             </router-link>
           </li>

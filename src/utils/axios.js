@@ -11,6 +11,7 @@ axiosInstance.interceptors.response.use((response) => {
 }, (error) => {
     if (error.response.status === 401) {
         store.dispatch('logout');
+        document.body.classList.add('login-page');
         router.push('/login');
     }
     return Promise.reject(error);

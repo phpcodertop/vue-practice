@@ -7,6 +7,7 @@ import './assets/style.css';
 import "vue-toastification/dist/index.css";
 
 import './utils/adminlte';
+import './utils/validationRules';
 import Toast from "vue-toastification";
 
 import router from '@/router';

@@ -8,7 +8,7 @@ const store = createStore({
             namespaced: true,
             ...todosModule
         },
-        auth: authModule
+        auth: authModule,
     }
 });
 
