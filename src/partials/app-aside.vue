@@ -60,6 +60,14 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link :to="{ name: 'contactUs' }" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Contact Us
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item">
             <a href="#" @click.prevent="logout" class="nav-link"><i class="nav-icon fas fa-power-off"></i> Logout</a>
           </li>
         </ul>

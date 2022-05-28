@@ -10,6 +10,7 @@ import NotFound from "@/pages/NotFound";
 import appProfile from "@/pages/AppProfile";
 import appContactsList from "@/pages/AppContactsList";
 import appContactsEdit from "@/pages/appContactsEdit";
+import contactUs from "@/pages/ContactUs";
 
 const routes = [
     { path: '/', component: Home, name: 'home', meta: { requiresAuth: true } },
@@ -17,6 +18,7 @@ const routes = [
     { path: '/register', name: 'register', component: appRegister, meta: { layout: 'auth', redirectIfAuth: true }},
     { path: '/profile', component: appProfile, name: 'profile', meta: { requiresAuth: true } },
     { path: '/todos', component: appTodo, name: 'todos', meta: { requiresAuth: true } },
+    { path: '/contact-us', component: contactUs, name: 'contactUs', meta: { requiresAuth: true } },
     { path: '/contacts', component: appContactsList, name: 'contacts', meta: { requiresAuth: true } },
     { path: '/contacts/:id', component: appContactsEdit, name: 'contactsEdit', meta: { requiresAuth: true } },
     {

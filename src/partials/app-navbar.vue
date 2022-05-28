@@ -15,6 +15,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <router-link :to="{ name: 'contacts' }" class="nav-link">Contacts</router-link>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <router-link :to="{ name: 'contactUs' }" class="nav-link">Contact Us</router-link>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
