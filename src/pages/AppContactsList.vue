@@ -178,7 +178,8 @@ export default {
         },
         {
           data: 'id', render: (id) => {
-            return '<button  data-id="'+id+'" class="deleteBtn btn btn-danger">Delete</button>';
+            return `<button data-link="/contacts/${id}" class="editBtn btn btn-success">Edit</button>
+                <button  data-id="${id}" class="deleteBtn btn btn-danger">Delete</button>`;
           }
         }
       ],
@@ -206,6 +207,10 @@ export default {
         setTimeout(() => {
           state.$router.go(state.$router.currentRoute);
         }, 1000);
+      });
+      $('.editBtn').on('click', function () {
+        let url = $(this).attr('data-link');
+        state.$router.push(url);
       });
     }, 1000);
   }
