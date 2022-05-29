@@ -57,7 +57,6 @@ export default {
   },
   methods: {
     async submitForm(values) {
-      console.log(values);
       await contactUsService.sendMessage(values);
       this.clearForm();
     },

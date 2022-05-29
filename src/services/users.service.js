@@ -13,6 +13,33 @@ const usersService = {
                 return error.message;
             });
     },
+    getUser(id) {
+        return http.get('/users/' + id, { headers: { ...authHeader() }})
+            .then(response => {
+                return response.data;
+            }).catch(error => {
+                toast.error('Something happened while getting user data.');
+                return error.message;
+            });
+    },
+    addUser(data) {
+        return http.post('/users', data, { headers: { ...authHeader() } })
+            .then(response => {
+                toast.success('User Added Successfully.');
+                return response.data;
+            }).catch(error => {
+                throw error.response.data;
+            });
+    },
+    updateUser(id, data) {
+        return http.patch('/users/' + id, data, { headers: { ...authHeader() } })
+            .then(response => {
+                toast.success('User Updated Successfully.');
+                return response.data;
+            }).catch(error => {
+                throw error.response.data;
+            });
+    },
     deleteUser(id) {
         return http.delete('/users/' + id, { headers: { ...authHeader() }})
             .then(response => {
