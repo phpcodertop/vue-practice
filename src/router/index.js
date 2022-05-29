@@ -2,15 +2,18 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from "@/store";
 import moment from "moment";
 
-import Home from "@/pages/Home";
-import appTodo from "@/pages/app-todo";
-import appLogin from "@/pages/appLogin";
-import appRegister from "@/pages/appRegister";
+import Home from "@/pages/Home/Home";
+import appTodo from "@/pages/Todo/app-todo";
+import appLogin from "@/pages/Auth/appLogin";
+import appRegister from "@/pages/Auth/appRegister";
 import NotFound from "@/pages/NotFound";
-import appProfile from "@/pages/AppProfile";
-import appContactsList from "@/pages/AppContactsList";
-import appContactsEdit from "@/pages/appContactsEdit";
-import contactUs from "@/pages/ContactUs";
+import appProfile from "@/pages/Auth/AppProfile";
+import appContactsList from "@/pages/Contacts/AppContactsList";
+import appContactsEdit from "@/pages/Contacts/appContactsEdit";
+import contactUs from "@/pages/ContactUs/ContactUs";
+import usersList from "@/pages/Users/UsersList";
+import usersEdit from "@/pages/Users/UsersEdit";
+import usersCreate from "@/pages/Users/UsersCreate";
 
 const routes = [
     { path: '/', component: Home, name: 'home', meta: { requiresAuth: true } },
@@ -21,6 +24,9 @@ const routes = [
     { path: '/contact-us', component: contactUs, name: 'contactUs', meta: { requiresAuth: true } },
     { path: '/contacts', component: appContactsList, name: 'contacts', meta: { requiresAuth: true } },
     { path: '/contacts/:id', component: appContactsEdit, name: 'contactsEdit', meta: { requiresAuth: true } },
+    { path: '/users', component: usersList, name: 'users', meta: { requiresAuth: true } },
+    { path: '/users/new', component: usersCreate, name: 'usersCreate', meta: { requiresAuth: true } },
+    { path: '/users/:id', component: usersEdit, name: 'usersEdit', meta: { requiresAuth: true } },
     {
         // path: "*",
         path: "/:catchAll(.*)",

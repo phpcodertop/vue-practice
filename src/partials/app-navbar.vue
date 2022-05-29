@@ -10,6 +10,9 @@
         <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
+        <router-link :to="{ name: 'users' }" class="nav-link">Users</router-link>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
         <router-link :to="{ name: 'todos' }" class="nav-link">Todos</router-link>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
