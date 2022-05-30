@@ -48,20 +48,30 @@ export default {
       loading: false,
       blogPosts: [],
       currentPage: 1,
-      next_page_url: null
+      next_page_url: null,
+      initial_state: true,
     };
+  },
+  beforeRouteLeave() {
+    this.currentPage = 1;
+    this.blogPosts = [];
+    this.next_page_url = null;
+    this.initial_state = true;
   },
   async mounted() {
     await this.loadMore();
     let state = this;
     $(window).scroll(async function () {
       if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-        if (state.next_page_url == null) {
+        if (state.initial_state === true
+            && state.next_page_url == null && state.blogPosts.length > 0) {
           toast.error('There are no more blog posts.');
+          state.initial_state = false;
           return;
+        } else {
+          state.currentPage++;
+          await state.loadMore();
         }
-        state.currentPage++;
-        await state.loadMore();
       }
     });
   },
