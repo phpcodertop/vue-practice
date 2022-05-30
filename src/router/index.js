@@ -14,19 +14,23 @@ import contactUs from "@/pages/ContactUs/ContactUs";
 import usersList from "@/pages/Users/UsersList";
 import usersEdit from "@/pages/Users/UsersEdit";
 import usersCreate from "@/pages/Users/UsersCreate";
+import blogListInfiniteScroll from "@/pages/Blog/BlogListInfiniteScroll";
+import blogDetails from "@/pages/Blog/BlogDetails";
 
 const routes = [
-    { path: '/', component: Home, name: 'home', meta: { requiresAuth: true } },
+    { path: '/', component: Home, name: 'home', meta: { requiresAuth: false } },
     { path: '/login', name: 'login', component: appLogin, meta: { layout: 'auth', redirectIfAuth: true }},
     { path: '/register', name: 'register', component: appRegister, meta: { layout: 'auth', redirectIfAuth: true }},
     { path: '/profile', component: appProfile, name: 'profile', meta: { requiresAuth: true } },
     { path: '/todos', component: appTodo, name: 'todos', meta: { requiresAuth: true } },
-    { path: '/contact-us', component: contactUs, name: 'contactUs', meta: { requiresAuth: true } },
+    { path: '/contact-us', component: contactUs, name: 'contactUs', meta: { requiresAuth: false } },
     { path: '/contacts', component: appContactsList, name: 'contacts', meta: { requiresAuth: true } },
     { path: '/contacts/:id', component: appContactsEdit, name: 'contactsEdit', meta: { requiresAuth: true } },
     { path: '/users', component: usersList, name: 'users', meta: { requiresAuth: true } },
     { path: '/users/new', component: usersCreate, name: 'usersCreate', meta: { requiresAuth: true } },
     { path: '/users/:id', component: usersEdit, name: 'usersEdit', meta: { requiresAuth: true } },
+    { path: '/blog', component: blogListInfiniteScroll, name: 'blog', meta: { requiresAuth: false } },
+    { path: '/blog/:slug', component: blogDetails, name: 'blogDetails', meta: { requiresAuth: false } },
     {
         // path: "*",
         path: "/:catchAll(.*)",

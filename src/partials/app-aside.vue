@@ -43,7 +43,7 @@
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"  v-if="user">
             <router-link :to="{ name: 'users' }" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
@@ -52,6 +52,14 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link :to="{ name: 'blog' }" class="nav-link">
+              <i class="nav-icon fas fa-blog"></i>
+              <p>
+                Blog
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item"  v-if="user">
             <router-link :to="{ name: 'todos' }" class="nav-link">
               <i class="nav-icon fas fa-check"></i>
               <p>
@@ -59,7 +67,7 @@
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"  v-if="user">
             <router-link :to="{ name: 'contacts' }" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
@@ -75,7 +83,7 @@
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="user">
             <a href="#" @click.prevent="logout" class="nav-link"><i class="nav-icon fas fa-power-off"></i> Logout</a>
           </li>
         </ul>

@@ -7,6 +7,7 @@
           <h5 class="m-0">Home Page</h5>
         </div>
         <div class="card-body">
+
           <h6 class="card-title">Welcome To our Practice center</h6>
 
           <p class="card-text">Here should be the home page content.</p>
@@ -23,7 +24,3 @@ export default {
   name: "AppHome",
 }
 </script>
-
-<style scoped>
-
-</style>

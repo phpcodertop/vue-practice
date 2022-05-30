@@ -9,13 +9,16 @@
       <li class="nav-item d-none d-sm-inline-block">
         <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item d-none d-sm-inline-block" v-if="user">
         <router-link :to="{ name: 'users' }" class="nav-link">Users</router-link>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item d-none d-sm-inline-block" >
+        <router-link :to="{ name: 'blog' }" class="nav-link">Blog</router-link>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block" v-if="user">
         <router-link :to="{ name: 'todos' }" class="nav-link">Todos</router-link>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <li class="nav-item d-none d-sm-inline-block" v-if="user">
         <router-link :to="{ name: 'contacts' }" class="nav-link">Contacts</router-link>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
@@ -134,6 +137,17 @@
 <script>
 export default {
   name: "app-navbar",
+  data() {
+    return { user: null };
+  },
+  created() {
+    this.user = this.$store.state.auth.user;
+  },
+  watch: {
+    '$store.state.auth.user': function () {
+      this.user = this.$store.state.auth.user;
+    }
+  },
 }
 </script>
 

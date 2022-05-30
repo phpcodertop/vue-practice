@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// todo add 404 page styles
 export default {
   name: "NotFound"
 }
