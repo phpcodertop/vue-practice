@@ -9,12 +9,20 @@
     <div class="col-md-12">
       <p class="alert alert-danger text-center">
         There are no data.
-        <a href="#">Add New</a>
+        <router-link v-show="user" :to="{ name: 'blogCreate' }">Add New</router-link>
       </p>
     </div>
   </div>
 
   <div class="row" v-else>
+    <div class="col-md-12" v-show="user">
+      <div class="card">
+        <div class="card-header">
+          <router-link  class="btn btn-primary float-right" :to="{ name: 'blogCreate' }">Add New</router-link>
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-6" v-for="post in blogPosts" :key="post.id">
       <router-link class="text-muted" :to="{ name: 'blogDetails', params: { slug: post.slug }}">
       <div class="card">
@@ -50,6 +58,7 @@ export default {
       currentPage: 1,
       next_page_url: null,
       initial_state: true,
+      user: null,
     };
   },
   beforeRouteLeave() {
@@ -59,6 +68,7 @@ export default {
     this.initial_state = true;
   },
   async mounted() {
+    this.user = this.$store.state.auth.user;
     await this.loadMore();
     let state = this;
     $(window).scroll(async function () {

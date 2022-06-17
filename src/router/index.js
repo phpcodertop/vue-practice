@@ -16,6 +16,8 @@ import usersEdit from "@/pages/Users/UsersEdit";
 import usersCreate from "@/pages/Users/UsersCreate";
 import blogListInfiniteScroll from "@/pages/Blog/BlogListInfiniteScroll";
 import blogDetails from "@/pages/Blog/BlogDetails";
+import BlogCreate from "@/pages/Blog/BlogCreate";
+import blogEdit from "@/pages/Blog/BlogEdit";
 
 const routes = [
     { path: '/', component: Home, name: 'home', meta: { requiresAuth: false } },
@@ -30,6 +32,8 @@ const routes = [
     { path: '/users/new', component: usersCreate, name: 'usersCreate', meta: { requiresAuth: true } },
     { path: '/users/:id', component: usersEdit, name: 'usersEdit', meta: { requiresAuth: true } },
     { path: '/blog', component: blogListInfiniteScroll, name: 'blog', meta: { requiresAuth: false } },
+    { path: '/blog/new', component: BlogCreate, name: 'blogCreate', meta: { requiresAuth: true } },
+    { path: '/blog/:slug/edit', component: blogEdit, name: 'blogPostEdit', meta: { requiresAuth: false } },
     { path: '/blog/:slug', component: blogDetails, name: 'blogDetails', meta: { requiresAuth: false } },
     {
         // path: "*",
@@ -38,7 +42,7 @@ const routes = [
         component: NotFound,
         meta: {
             layout: '404',
-            requiresAuth: true
+            requiresAuth: false
         }
     }
 ];

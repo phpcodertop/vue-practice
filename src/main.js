@@ -13,6 +13,8 @@ import Toast from "vue-toastification";
 import router from '@/router';
 import store from "@/store";
 
+// todo fix checkbox on blog post
+
 const app = createApp(App);
 app.use(router);
 app.use(store);

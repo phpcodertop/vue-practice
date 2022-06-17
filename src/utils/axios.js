@@ -13,6 +13,8 @@ axiosInstance.interceptors.response.use((response) => {
         store.dispatch('logout');
         document.body.classList.add('login-page');
         router.push('/login');
+    } else if (error.response.status === 404) {
+        router.push({ name: 'home' });
     }
     return Promise.reject(error);
 });
