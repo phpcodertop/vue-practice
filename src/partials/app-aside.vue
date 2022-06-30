@@ -59,6 +59,14 @@
               </p>
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'gallery' }" class="nav-link">
+              <i class="nav-icon fas fa-images"></i>
+              <p>
+                Gallery
+              </p>
+            </router-link>
+          </li>
           <li class="nav-item"  v-if="user">
             <router-link :to="{ name: 'todos' }" class="nav-link">
               <i class="nav-icon fas fa-check"></i>

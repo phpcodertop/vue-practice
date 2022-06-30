@@ -15,6 +15,9 @@
       <li class="nav-item d-none d-sm-inline-block" >
         <router-link :to="{ name: 'blog' }" class="nav-link">Blog</router-link>
       </li>
+      <li class="nav-item d-none d-sm-inline-block" >
+        <router-link :to="{ name: 'gallery' }" class="nav-link">Gallery</router-link>
+      </li>
       <li class="nav-item d-none d-sm-inline-block" v-if="user">
         <router-link :to="{ name: 'todos' }" class="nav-link">Todos</router-link>
       </li>
